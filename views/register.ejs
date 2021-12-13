@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form method="post" action="/register">
-    <h2>Create an account</h2>
-    <p>Already have an account? Click <a href="/login">here</a> to login</p>
-    <p>Email Address</p>
-    <input type="email" name="email" placeholder="Email"/>
-    <p>Password</p>
-    <input type="password" name="password" placeholder="Password"/>
-    <button class="btn btn-primary" type="submit">Register</button>
-  </form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <%- include('partials/_header') %>
+    <form
+      method="post"
+      action="/register"
+      style="padding: 15px;"
+    >
+      <h2>Create an account</h2>
+      <p>Already have an account? Click <a href="/login">here</a> to login!</p>
+      <div>
+        <h6>Email Address</h6>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          style="height: 40px; width: 300px; padding: 5px"
+        />
+      </div>
+      <div style="position: relative; top: 10px;">
+        <h6>Password</h6>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          style="height: 40px; width: 300px; padding: 5px"
+        />
+      </div>
+      <div>
+      <button class="btn btn-primary" type="submit" style="position: relative; top: 30px;">Register</button>
+    </div>
+    </form>
+  </body>
 </html>
