@@ -83,11 +83,11 @@ app.post("/register", (req,res) => {
   const id = generateRandomString(6,"1234567890qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM");
 
   if (email === "" || password === ""){
-    return res.status(404).send("Email and password cannot be empty");
+    return res.status(404).send("Email and password cannot be blank.");
   }
   const userEmail = getUserByEmail(users, email);
   if(userEmail) {
-    return res.status(404).send("User already exists");
+    return res.status(404).send("User already exists.");
   }
   users[id] = {
     id: id,
@@ -117,16 +117,16 @@ app.post("/login",(req,res) => {
   const password = req.body.password;
   
   if (!email || !password) {
-    return res.status(403).send("Email and password cannot be blank");
+    return res.status(403).send("Email and password cannot be blank.");
   }
 
   const user = getUserByEmail(users, email);
   if (!user) {
-    return res.status(403).send("Email does not exist");
+    return res.status(403).send("Email does not exist.");
   }
 
   if(!bcrypt.compareSync(password, user.password)) {
-    return res.status(400).send("Password does not match")
+    return res.status(400).send("Password does not match.")
   }
   
   req.session["user_id"] = user.id;
@@ -163,7 +163,7 @@ app.get("/urls", (req, res) => {
   };
 
   if (!users[userId]) {
-    res.status(403).send("Must be logged in to use the app. <br></br>Click <a href='/login'>here</a> to login.");
+    res.status(403).send("Please sing in to view this page. <br></br>Click <a href='/login'>here</a> to login.");
   }
 
   res.render("urls_index", templateVars);
@@ -217,10 +217,10 @@ app.get("/urls/:shortURL", (req, res) => {
     user: users[userId]
   };
   if (userId !== urlDatabase[shortURL].userID) {
-    return res.status(401).send("You do not have the permission to access this page.");
+    return res.status(401).send("You don't have the permission to access this page.");
   }
   if (!userId) {
-    return res.status(401).send("You do not have the permission to access this page.");
+    return res.status(401).send("You don't have the permission to access this page.");
   }
   res.render("urls_show", templateVars);
 });

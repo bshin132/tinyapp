@@ -12,7 +12,6 @@ const getUserByEmail = (users, email) => {
       return users[userId];
     }
   }
-
 };
 
 const urlsForUser = (userID, urlDatabase) => {
